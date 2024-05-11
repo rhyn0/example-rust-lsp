@@ -26,7 +26,9 @@ async function createServer(
     outputChannel: LogOutputChannel,
     initializationOptions: IInitOptions,
 ): Promise<LanguageClient> {
-    const command = settings.interpreter[0];
+    // const command = settings.interpreter[0];
+    const command = '/home/rhyn0/example-rust-lsp/target/debug/example-rust-lsp'
+    traceInfo(`RYAN - Changed command to rust compiled`)
     const cwd = settings.cwd;
 
     // Set debugger path needed for debugging python code.
@@ -63,11 +65,11 @@ async function createServer(
         documentSelector: isVirtualWorkspace()
             ? [{ language: 'python' }]
             : [
-                  { scheme: 'file', language: 'python' },
-                  { scheme: 'untitled', language: 'python' },
-                  { scheme: 'vscode-notebook', language: 'python' },
-                  { scheme: 'vscode-notebook-cell', language: 'python' },
-              ],
+                { scheme: 'file', language: 'python' },
+                { scheme: 'untitled', language: 'python' },
+                { scheme: 'vscode-notebook', language: 'python' },
+                { scheme: 'vscode-notebook-cell', language: 'python' },
+            ],
         outputChannel: outputChannel,
         traceOutputChannel: outputChannel,
         revealOutputChannelOn: RevealOutputChannelOn.Never,
